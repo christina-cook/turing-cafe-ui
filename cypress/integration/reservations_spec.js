@@ -14,6 +14,13 @@ describe('Turing Cafe Reservations', () => {
   })
 
   it('Should display all existing reservations below the form', () => {
+    cy.get('.reservation-card').should('be.visible')
+  })
 
+  it.only('Should be able to see user data displayed in the form\'s inputs', () => {
+    cy.get('.name-input').type('Christina').should('have.value', 'Christina')
+      .get('.date-input').type('10/27').should('have.value', '10/27')
+      .get('.time-input').type('7:30').should('have.value', '7:30')
+      .get('.number-input').type('2').should('have.value', '2')
   })
 })
