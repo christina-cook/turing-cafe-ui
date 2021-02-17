@@ -8,13 +8,39 @@ class Form extends Component {
       name: '',
       date: '',
       time: '',
-      number: 0
+      number: null
     }
   }
 
   render() {
     return (
-      <h2>Form goes here</h2>
+      <form>
+        <input
+          type='text'
+          placeholder='Name'
+          name='name'
+          value={this.state.name}
+        />
+        <input
+          type='text'
+          placeholder='Date (mm/dd)'
+          name='date'
+          value={this.state.date}
+        />
+        <input
+          type='text'
+          placeholder='Time'
+          name='time'
+          value={this.state.time}
+        />
+        <input
+          type='text'
+          placeholder='Number of Guests'
+          name='number'
+          value={this.state.number}
+        />
+        <button className='form-button'>Make Reservation</button>
+      </form>
     )
   }
 }

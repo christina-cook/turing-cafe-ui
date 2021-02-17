@@ -24,3 +24,8 @@
   grid-gap: 20px;
   padding: 1.5rem;
 }
+
+.resy-form {
+  display: flex;
+  justify-content: space-evenly;
+}
