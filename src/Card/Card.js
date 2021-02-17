@@ -4,11 +4,11 @@ import './Card.css';
 const Card = ({id, name, date, number, time}) => {
   return (
     <div className='reservation-card'>
-      <h3>{name}</h3>
-      <p>{date}</p>
-      <p>{time} pm</p>
-      <p>Number of guests: {number}</p>
-      <button>Cancel</button>
+      <h3 className='resy-name'>{name}</h3>
+      <p className='resy-date'>{date}</p>
+      <p className='resy-time'>{time} pm</p>
+      <p className='resy-number'>Number of guests: {number}</p>
+      <button className='cancel'>Cancel</button>
     </div>
   )
 }
