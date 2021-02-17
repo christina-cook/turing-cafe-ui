@@ -8,8 +8,7 @@ class Form extends Component {
       name: '',
       date: '',
       time: '',
-      number: '',
-      id: Date.now()
+      number: ''
     }
   }
 
@@ -20,15 +19,25 @@ class Form extends Component {
   }
 
   submitReservation(event) {
-    event.preventDefault();
+    event.preventDefault()
     const newResy = {
       date: this.state.date,
-      id: this.state.id,
+      id: Date.now(),
       name: this.state.name,
       number: this.state.number,
       time: this.state.time
     };
-    this.props.addNewReservation(newResy);
+    this.props.addNewReservation(newResy)
+    this.clearInputs()
+  }
+
+  clearInputs = () => {
+    this.setState({
+      name: '',
+      date: '',
+      time: '',
+      number: ''
+    })
   }
 
   render() {
