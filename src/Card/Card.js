@@ -3,7 +3,13 @@ import './Card.css';
 
 const Card = ({id, name, date, number, time}) => {
   return (
-    <h3>This is a card</h3>
+    <div className='reservation-card'>
+      <h3>{name}</h3>
+      <p>{date}</p>
+      <p>{time}</p>
+      <p>Number of guests: {number}</p>
+      <button>Cancel</button>
+    </div>
   )
 }
 
