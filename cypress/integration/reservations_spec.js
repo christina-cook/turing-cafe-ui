@@ -17,10 +17,28 @@ describe('Turing Cafe Reservations', () => {
     cy.get('.reservation-card').should('be.visible')
   })
 
-  it.only('Should be able to see user data displayed in the form\'s inputs', () => {
+  it('Should be able to type into the form\'s inputs and see text displayed in the form', () => {
     cy.get('.name-input').type('Christina').should('have.value', 'Christina')
       .get('.date-input').type('10/27').should('have.value', '10/27')
       .get('.time-input').type('7:30').should('have.value', '7:30')
       .get('.number-input').type('2').should('have.value', '2')
+  })
+
+  it('Should be able to make a reservation by filling out the form and clicking the button', () => {
+    cy.get('.name-input').type('Christina').should('have.value', 'Christina')
+      .get('.date-input').type('10/27').should('have.value', '10/27')
+      .get('.time-input').type('7:30').should('have.value', '7:30')
+      .get('.number-input').type('2').should('have.value', '2')
+      .get('.form-button').click()
+  })
+
+  it('Should see the new reservation displayed on the page after submitting the form', () => {
+    cy.get('.name-input').type('Christina').should('have.value', 'Christina')
+      .get('.date-input').type('10/27').should('have.value', '10/27')
+      .get('.time-input').type('7:30').should('have.value', '7:30')
+      .get('.number-input').type('2').should('have.value', '2')
+      .get('.form-button').click()
+      .get('.reservation-card:last').should('contain', 'Christina')
+        .and('contain', '10/27').and('contain', '7:30 pm').and('contain', 'Number of guests: 2')
   })
 })
