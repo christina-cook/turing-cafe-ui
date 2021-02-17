@@ -11,10 +11,17 @@ describe('Turing Cafe Reservations', () => {
 
   it('Should display a form for a user to make a reservation', () => {
     cy.get('.reservation-form').should('be.visible')
+      .get('input:first').should('have.class', 'name-input')
+      .get('.date-input').should('exist')
+      .get('.time-input').should('exist')
+      .get('input:last').should('have.class', 'number-input')
   })
 
   it('Should display all existing reservations below the form', () => {
     cy.get('.reservation-card').should('be.visible')
+      .get('.reservation-card').find('p')
+      .get('h3').should('have.class', 'resy-name')
+      .get('.cancel').should('be.visible')
   })
 
   it('Should be able to type into the form\'s inputs and see text displayed in the form', () => {
