@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Reservations from '../Reservations/Reservations';
 import Form from '../Form/Form';
-import getAllReservations from '../API/apiCalls';
+import { getAllReservations, postNewReservation } from '../API/apiCalls';
 
 class App extends Component {
   constructor() {
@@ -21,9 +21,11 @@ class App extends Component {
   }
 
   addNewReservation = (reservation) => {
-    this.setState({
-      reservations: [...this.state.reservations, reservation]
-    })
+    postNewReservation(reservation)
+      .then(data => this.setState({
+        reservations: [...this.state.reservations, reservation]
+      }))
+      .catch(error => console.log(error))
   }
 
   render() {
