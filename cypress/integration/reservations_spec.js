@@ -32,10 +32,24 @@ describe('Turing Cafe Reservations', () => {
   })
 
   it('Should be able to make a reservation by filling out the form and clicking the button', () => {
-    cy.get('.name-input').type('Christina').should('have.value', 'Christina')
-      .get('.date-input').type('10/27').should('have.value', '10/27')
-      .get('.time-input').type('7:30').should('have.value', '7:30')
-      .get('.number-input').type('2').should('have.value', '2')
+    cy.intercept({
+      method: 'POST',
+      url: 'http://localhost:3001/api/v1/reservations'
+    },
+    {
+      statusCode: 200,
+      body: {
+        id: 2,
+        name: 'Jesse',
+        date: '10/18',
+        time: '7:00',
+        number: 4
+      }
+    })
+      .get('.name-input').type('Jesse').should('have.value', 'Jesse')
+      .get('.date-input').type('10/18').should('have.value', '10/18')
+      .get('.time-input').type('7:00').should('have.value', '7:00')
+      .get('.number-input').type('4').should('have.value', '4')
       .get('.form-button').click()
   })
 
